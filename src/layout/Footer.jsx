@@ -50,7 +50,10 @@ const Footer = () => {
         {/* Copyright */}
         <div className="text-center py-3 border-top mt-4">
           <p className="mb-0">
-            &copy; {new Date().getFullYear()} GfineGrowth. All Rights Reserved.
+            &copy; {new Date().getFullYear()} All Rights Reserved. Developer{" "}
+            <a href="https://sejihad.vercel.app" target="_blank">
+              SE Jihad
+            </a>
           </p>
         </div>
       </div>
