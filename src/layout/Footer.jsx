@@ -1,4 +1,5 @@
 import "./Footer.css";
+
 const Footer = () => {
   return (
     <footer className="footer pt-5">
@@ -12,16 +13,16 @@ const Footer = () => {
               grow through innovative solutions and strategic thinking.
             </p>
             <div className="social-links mt-4">
-              <a href="#" className="me-3 text-dark">
+              <a href="#" className="me-3">
                 <i className="fab fa-facebook-f"></i>
               </a>
-              <a href="#" className="me-3 text-dark">
+              <a href="#" className="me-3">
                 <i className="fab fa-twitter"></i>
               </a>
-              <a href="#" className="me-3 text-dark">
+              <a href="#" className="me-3">
                 <i className="fab fa-instagram"></i>
               </a>
-              <a href="#" className="text-dark">
+              <a href="#" className="me-3">
                 <i className="fab fa-linkedin-in"></i>
               </a>
             </div>
@@ -50,8 +51,13 @@ const Footer = () => {
         {/* Copyright */}
         <div className="text-center py-3 border-top mt-4">
           <p className="mb-0">
-            &copy; {new Date().getFullYear()} All Rights Reserved. Developer{" "}
-            <a href="https://sejihad.vercel.app" target="_blank">
+            &copy; {new Date().getFullYear()} All Rights Reserved. Developed By{" "}
+            <a
+              href="https://sejihad.vercel.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="developer-link"
+            >
               SE Jihad
             </a>
           </p>

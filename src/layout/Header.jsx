@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import logo from "../assets/logo.png";
 import "./Header.css";
-
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +18,6 @@ const Header = () => {
     };
   }, []);
 
-  // Toggle menu open/close
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
@@ -31,10 +30,9 @@ const Header = () => {
     >
       <div className="container">
         <Link className="navbar-brand" to="/">
-          GfineGrowth
+          <img src={logo} alt="" />
         </Link>
 
-        {/* Custom Toggle Button */}
         <button
           className="custom-toggler"
           onClick={toggleMenu}
@@ -43,13 +41,11 @@ const Header = () => {
           aria-controls="navbarNav"
           type="button"
         >
-          {/* Simple hamburger icon */}
           <div className={`bar ${isOpen ? "open" : ""}`}></div>
           <div className={`bar ${isOpen ? "open" : ""}`}></div>
           <div className={`bar ${isOpen ? "open" : ""}`}></div>
         </button>
 
-        {/* Navbar collapse */}
         <div
           className={`collapse navbar-collapse ${isOpen ? "show" : ""}`}
           id="navbarNav"
@@ -59,7 +55,7 @@ const Header = () => {
               <Link
                 className="nav-link active"
                 to="/"
-                onClick={() => setIsOpen(false)} // Close menu on link click
+                onClick={() => setIsOpen(false)}
               >
                 Home
               </Link>

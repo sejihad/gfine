@@ -1,7 +1,8 @@
 .footer {
-  background-color: #3c3c3c !important ;
-  color: white !important ;
+  background-color: #ffffff !important;
+  color: #333333 !important;
   padding: 80px 0 20px !important;
+  border-top: 1px solid #f0f0f0 !important;
 }
 
 .footer h4 {
@@ -9,6 +10,7 @@
   margin-bottom: 25px !important;
   position: relative !important;
   padding-bottom: 10px !important;
+  color: var(--dark-color) !important;
 }
 
 .footer h4::after {
@@ -21,19 +23,23 @@
   left: 0 !important;
 }
 
+.footer p {
+  color: var(--text-color) !important;
+}
+
 .footer-links li {
   margin-bottom: 10px !important;
   list-style: none !important;
 }
 
 .footer-links a {
-  color: white !important;
+  color: var(--text-color) !important;
   text-decoration: none !important;
   transition: all 0.3s ease !important;
 }
 
 .footer-links a:hover {
-  color: white !important;
+  color: var(--primary-color) !important;
   padding-left: 5px !important;
 }
 
@@ -43,10 +49,8 @@
   align-items: flex-start !important;
 }
 
-.contact-icon {
-  width: 30px !important;
+.contact-info i {
   color: var(--primary-color) !important;
-  margin-right: 10px !important;
 }
 
 .social-links a {
@@ -55,23 +59,49 @@
   justify-content: center !important;
   width: 40px !important;
   height: 40px !important;
-  background-color: white !important;
+  background-color: #f5f5f5 !important;
   border-radius: 50% !important;
-  color: black !important;
+  color: var(--text-color) !important;
   margin-right: 10px !important;
   transition: all 0.3s ease !important;
 }
 
 .social-links a:hover {
   background-color: var(--primary-color) !important;
+  color: white !important;
   transform: translateY(-3px) !important;
 }
 
-.copyright {
-  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-  padding-top: 20px !important;
-  margin-top: 40px !important;
-  text-align: center !important;
-  color: #bbb !important;
-  font-size: 14px !important;
+.border-top {
+  border-top: 1px solid #e0e0e0 !important;
+}
+
+.developer-link {
+  color: var(--primary-color) !important;
+  text-decoration: none !important;
+  font-weight: 500 !important;
+}
+
+.developer-link:hover {
+  text-decoration: underline !important;
+}
+
+@media (max-width: 767.98px) {
+  .footer {
+    padding: 60px 0 20px !important;
+    text-align: center;
+  }
+
+  .footer h4::after {
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+
+  .contact-info {
+    justify-content: center;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
 }

@@ -1,5 +1,6 @@
 import { Carousel } from "react-bootstrap";
 import "./Home.css";
+
 function Home() {
   return (
     <>
@@ -14,7 +15,7 @@ function Home() {
                   Our agency helps businesses grow through innovative digital
                   solutions and creative strategies that deliver real results.
                 </p>
-                <div className="d-flex flex-wrap gap-3">
+                <div className="d-flex mb-3 flex-wrap gap-3">
                   <a href="#" className="btn btn-primary">
                     Our Services
                   </a>

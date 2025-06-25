@@ -45,7 +45,7 @@ const features = [
 ];
 
 const stats = [
-  { number: "250+", text: "Projects Completed" },
+  { number: "240+", text: "Projects Completed" },
   { number: "120+", text: "Happy Clients" },
   { number: "50+", text: "Achievement" },
   { number: "20+", text: "Team Members" },
@@ -123,7 +123,7 @@ const About = () => {
         <div className="container">
           <div className="section-title">
             <h2>Meet Our Team</h2>
-            <p className="mx-auto" style={{ maxWidth: "700px" }}>
+            <p className="mx-auto">
               Our talented team of professionals brings diverse skills and
               expertise to every project.
             </p>

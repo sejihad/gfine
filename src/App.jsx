@@ -3,6 +3,7 @@ import "./App.css";
 import Footer from "./layout/Footer.jsx";
 import Header from "./layout/Header.jsx";
 import About from "./pages/About.jsx";
+import CareerCommunity from "./pages/CareerCommunity.jsx";
 import Home from "./pages/Home.jsx";
 import NotFound from "./pages/NotFound.jsx";
 const App = () => {
@@ -12,6 +13,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/career-community" element={<CareerCommunity />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
