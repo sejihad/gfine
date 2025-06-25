@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
 import "./Header.css";
+
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -29,9 +30,9 @@ const Header = () => {
       }`}
     >
       <div className="container">
-        <Link className="navbar-brand" to="/">
+        <NavLink className="navbar-brand" to="/">
           <img src={logo} alt="" />
-        </Link>
+        </NavLink>
 
         <button
           className="custom-toggler"
@@ -52,31 +53,32 @@ const Header = () => {
         >
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <Link
-                className="nav-link active"
+              <NavLink
+                className="nav-link"
                 to="/"
                 onClick={() => setIsOpen(false)}
+                end
               >
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link
+              <NavLink
                 className="nav-link"
                 to="/about"
                 onClick={() => setIsOpen(false)}
               >
                 About
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
-              <Link
+              <NavLink
                 className="nav-link"
                 to="/career-community"
                 onClick={() => setIsOpen(false)}
               >
                 Career Community
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>

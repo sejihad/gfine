@@ -25,7 +25,10 @@
   transition: color 0.3s ease;
   position: relative;
 }
-
+.nav-link.active {
+  color: your-active-color; /* Change this to your desired active color */
+  font-weight: bold; /* Optional: make active link bold */
+}
 .nav-link:hover {
   color: #222 !important;
 }
