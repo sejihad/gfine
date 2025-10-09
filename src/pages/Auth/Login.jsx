@@ -1,12 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  FaCloudUploadAlt,
-  FaEye,
-  FaEyeSlash,
-  FaFacebookF,
-  FaGoogle,
-  FaUser,
-} from "react-icons/fa";
+import { FaCloudUploadAlt, FaEye, FaEyeSlash, FaUser } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -99,10 +92,6 @@ const Login = () => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      if (file.size > 2 * 1024 * 1024) {
-        toast.error("Image size must be less than 2MB");
-        return;
-      }
       setProfileImage(file);
       const reader = new FileReader();
       reader.onload = () => {
@@ -117,361 +106,330 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-red-600 via-blue-700 to-purple-800 p-4">
-      <div
-        className={`relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden transition-all duration-700 ease-in-out ${
-          isActive ? "h-[650px]" : "h-[600px]"
-        }`}
-      >
+    <div className="min-h-screen mt-20 flex items-center justify-center bg-gradient-to-br from-blue-600 via-purple-600 to-red-600 p-4">
+      <div className="relative w-full max-w-6xl bg-white rounded-3xl shadow-2xl overflow-hidden min-h-[600px]">
         {/* OTP Verification */}
         {otpPending ? (
           <div className="absolute inset-0 flex items-center justify-center p-8 z-30 bg-white">
-            <form onSubmit={otpSubmit} className="w-full max-w-md">
+            <div className="w-full max-w-md">
               <div className="text-center mb-8">
-                <h1 className="text-3xl font-bold bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent mb-2">
+                <div className="w-20 h-20 mx-auto mb-4 bg-gradient-to-r from-blue-100 to-red-100 rounded-full flex items-center justify-center">
+                  <span className="text-2xl">🔐</span>
+                </div>
+                <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-red-600 bg-clip-text text-transparent mb-2">
                   Verify OTP
                 </h1>
                 <p className="text-gray-600">
-                  Enter the OTP sent to your email
+                  Enter the 6-digit OTP sent to your email address
                 </p>
               </div>
 
-              <div className="relative mb-6">
-                <input
-                  type="text"
-                  placeholder="Enter 6-digit OTP"
-                  value={otp}
-                  onChange={(e) => setOtp(e.target.value)}
-                  maxLength={6}
-                  required
-                  className="w-full px-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 pr-20"
-                />
-                <span className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-red-600 text-white px-3 py-1 rounded-lg text-sm font-semibold">
-                  OTP
-                </span>
-              </div>
+              <form onSubmit={otpSubmit} className="space-y-6">
+                <div className="relative">
+                  <input
+                    type="text"
+                    placeholder="Enter 6-digit OTP"
+                    value={otp}
+                    onChange={(e) => setOtp(e.target.value)}
+                    maxLength={6}
+                    required
+                    className="w-full px-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-300 text-center text-lg font-semibold tracking-widest"
+                  />
+                </div>
 
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
-              >
-                {loading ? (
-                  <div className="flex items-center justify-center space-x-2">
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    <span>Verifying...</span>
-                  </div>
-                ) : (
-                  "Verify OTP"
-                )}
-              </button>
-            </form>
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full bg-gradient-to-r from-blue-600 to-red-600 hover:from-blue-700 hover:to-red-700 text-white py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
+                >
+                  {loading ? (
+                    <div className="flex items-center justify-center space-x-2">
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                      <span>Verifying OTP...</span>
+                    </div>
+                  ) : (
+                    "Verify & Continue"
+                  )}
+                </button>
+              </form>
+
+              {/* <div className="text-center mt-6">
+                <p className="text-gray-500 text-sm">
+                  Didn't receive OTP?{" "}
+                  <button className="text-blue-600 hover:text-blue-700 font-medium">
+                    Resend OTP
+                  </button>
+                </p>
+              </div> */}
+            </div>
           </div>
         ) : (
-          <>
-            {/* Login Form */}
-            <div
-              className={`absolute top-0 left-0 w-1/2 h-full flex items-center justify-center p-8 transition-all duration-700 ease-in-out z-20 ${
-                isActive ? "left-[-50%] opacity-0" : "left-0 opacity-100"
-              }`}
-            >
-              <form onSubmit={loginSubmit} className="w-full max-w-sm">
+          <div className="flex flex-col lg:flex-row min-h-[600px]">
+            {/* Left Side - Login */}
+            <div className="flex-1 flex items-center justify-center p-8 lg:p-12">
+              <div className="w-full max-w-md">
                 <div className="text-center mb-8">
-                  <h1 className="text-3xl font-bold bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent mb-2">
+                  <h1 className="text-3xl lg:text-4xl font-bold bg-gradient-to-r from-blue-600 to-red-600 bg-clip-text text-transparent mb-3">
                     Welcome Back
                   </h1>
-                  <p className="text-gray-600">
-                    Sign in to continue your journey
+                  <p className="text-gray-600 text-lg">
+                    Sign in to continue your career journey
                   </p>
                 </div>
 
-                <div className="space-y-4">
-                  <div className="relative">
-                    <input
-                      type="email"
-                      placeholder="Enter your email"
-                      required
-                      value={loginEmail}
-                      onChange={(e) => setLoginEmail(e.target.value)}
-                      className="w-full px-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 pr-12"
-                    />
-                    <span className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-                      ✉
-                    </span>
-                  </div>
-
-                  <div className="relative">
-                    <input
-                      type={loginPasswordVisible ? "text" : "password"}
-                      placeholder="Enter your password"
-                      required
-                      value={loginPassword}
-                      onChange={(e) => setLoginPassword(e.target.value)}
-                      className="w-full px-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 pr-12"
-                    />
-                    <button
-                      type="button"
-                      onClick={() =>
-                        setLoginPasswordVisible(!loginPasswordVisible)
-                      }
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors duration-200"
-                    >
-                      {loginPasswordVisible ? <FaEyeSlash /> : <FaEye />}
-                    </button>
-                  </div>
-                </div>
-
-                <div className="flex justify-between items-center my-6">
-                  <label className="flex items-center space-x-2 text-sm text-gray-600">
-                    <input
-                      type="checkbox"
-                      className="rounded text-red-600 focus:ring-red-500"
-                    />
-                    <span>Remember me</span>
-                  </label>
-                  <Link
-                    to="/password/forgot"
-                    className="text-red-600 hover:text-red-700 text-sm font-medium transition-colors duration-200"
-                  >
-                    Forgot Password?
-                  </Link>
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none mb-6"
-                >
-                  {loading ? (
-                    <div className="flex items-center justify-center space-x-2">
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                      <span>Signing In...</span>
+                <form onSubmit={loginSubmit} className="space-y-6">
+                  <div className="space-y-4">
+                    <div className="relative">
+                      <input
+                        type="email"
+                        placeholder="Enter your email"
+                        required
+                        value={loginEmail}
+                        onChange={(e) => setLoginEmail(e.target.value)}
+                        className="w-full px-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-300 pl-12"
+                      />
+                      <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg">
+                        ✉️
+                      </span>
                     </div>
-                  ) : (
-                    "Sign In"
-                  )}
-                </button>
 
-                <div className="relative mb-6">
-                  <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-gray-300"></div>
+                    <div className="relative">
+                      <input
+                        type={loginPasswordVisible ? "text" : "password"}
+                        placeholder="Enter your password"
+                        required
+                        value={loginPassword}
+                        onChange={(e) => setLoginPassword(e.target.value)}
+                        className="w-full px-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-4 focus:ring-blue-100 transition-all duration-300 pl-12 pr-12"
+                      />
+                      <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg">
+                        🔒
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          setLoginPasswordVisible(!loginPasswordVisible)
+                        }
+                        className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors duration-200"
+                      >
+                        {loginPasswordVisible ? <FaEyeSlash /> : <FaEye />}
+                      </button>
+                    </div>
                   </div>
-                  <div className="relative flex justify-center text-sm">
-                    <span className="px-2 bg-white text-gray-500">
-                      Or continue with
-                    </span>
-                  </div>
-                </div>
 
-                <div className="grid grid-cols-2 gap-3">
-                  <a
-                    href={`${import.meta.env.VITE_API_URL}/api/v1/google`}
-                    className="flex items-center justify-center space-x-2 py-3 border-2 border-gray-200 rounded-xl hover:border-red-500 hover:text-red-600 transition-all duration-300 group"
+                  <div className="flex justify-between items-center">
+                    <label className="flex items-center space-x-2 text-sm text-gray-600">
+                      <input
+                        type="checkbox"
+                        className="rounded text-blue-600 focus:ring-blue-500"
+                      />
+                      <span>Remember me</span>
+                    </label>
+                    <Link
+                      to="/password/forgot"
+                      className="text-blue-600 hover:text-blue-700 text-sm font-medium transition-colors duration-200"
+                    >
+                      Forgot Password?
+                    </Link>
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full bg-gradient-to-r from-blue-600 to-red-600 hover:from-blue-700 hover:to-red-700 text-white py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
                   >
-                    <FaGoogle className="text-gray-500 group-hover:text-red-600 transition-colors duration-200" />
-                    <span className="font-medium">Google</span>
-                  </a>
-                  <a
-                    href={`${import.meta.env.VITE_API_URL}/api/v1/facebook`}
-                    className="flex items-center justify-center space-x-2 py-3 border-2 border-gray-200 rounded-xl hover:border-blue-500 hover:text-blue-600 transition-all duration-300 group"
-                  >
-                    <FaFacebookF className="text-gray-500 group-hover:text-blue-600 transition-colors duration-200" />
-                    <span className="font-medium">Facebook</span>
-                  </a>
-                </div>
-              </form>
+                    {loading ? (
+                      <div className="flex items-center justify-center space-x-2">
+                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        <span>Signing In...</span>
+                      </div>
+                    ) : (
+                      "Sign In"
+                    )}
+                  </button>
+
+                  <div className="relative my-6">
+                    <div className="absolute inset-0 flex items-center">
+                      <div className="w-full border-t border-gray-300"></div>
+                    </div>
+                    <div className="relative flex justify-center text-sm">
+                      <span className="px-4 bg-white text-gray-500">
+                        Or continue with
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* <div className="grid grid-cols-2 gap-4">
+                    <a
+                      href={`${import.meta.env.VITE_API_URL}/api/v1/google`}
+                      className="flex items-center justify-center space-x-3 py-3 border-2 border-gray-200 rounded-xl hover:border-red-500 hover:bg-red-50 transition-all duration-300 group"
+                    >
+                      <FaGoogle className="text-gray-500 group-hover:text-red-600 text-lg transition-colors duration-200" />
+                      <span className="font-medium text-gray-700 group-hover:text-red-600">
+                        Google
+                      </span>
+                    </a>
+                    <a
+                      href={`${import.meta.env.VITE_API_URL}/api/v1/facebook`}
+                      className="flex items-center justify-center space-x-3 py-3 border-2 border-gray-200 rounded-xl hover:border-blue-500 hover:bg-blue-50 transition-all duration-300 group"
+                    >
+                      <FaFacebookF className="text-gray-500 group-hover:text-blue-600 text-lg transition-colors duration-200" />
+                      <span className="font-medium text-gray-700 group-hover:text-blue-600">
+                        Facebook
+                      </span>
+                    </a>
+                  </div> */}
+
+                  {/* <div className="text-center mt-6">
+                    <p className="text-gray-600">
+                      Don't have an account?{" "}
+                      <button
+                        type="button"
+                        onClick={() => setIsActive(true)}
+                        className="text-blue-600 hover:text-blue-700 font-semibold transition-colors duration-200"
+                      >
+                        Sign Up
+                      </button>
+                    </p>
+                  </div> */}
+                </form>
+              </div>
             </div>
 
-            {/* Register Form */}
+            {/* Right Side - Register */}
             <div
-              className={`absolute top-0 left-1/2 w-1/2 h-full flex items-center justify-center p-8 transition-all duration-700 ease-in-out z-20 ${
-                isActive ? "left-0 opacity-100" : "left-[100%] opacity-0"
+              className={`flex-1 bg-gradient-to-br from-blue-600 to-red-600 transition-all duration-500 ease-in-out ${
+                isActive ? "lg:block" : "lg:block"
               }`}
             >
-              <form onSubmit={registerSubmit} className="w-full max-w-sm">
-                <div className="text-center mb-6">
-                  <h1 className="text-3xl font-bold bg-gradient-to-r from-red-600 to-blue-600 bg-clip-text text-transparent mb-2">
-                    Create Account
-                  </h1>
-                  <p className="text-gray-600">
-                    Join us and start your career journey
-                  </p>
-                </div>
+              <div className="flex items-center justify-center h-full p-8 lg:p-12">
+                <div className="w-full max-w-md text-white">
+                  <div className="text-center mb-8">
+                    <h1 className="text-3xl lg:text-4xl font-bold mb-3">
+                      Hello, Friend!
+                    </h1>
+                    <p className="text-blue-100 text-lg opacity-90">
+                      Enter your personal details and start your journey with us
+                    </p>
+                  </div>
 
-                <div className="flex justify-center mb-4">
-                  <div
-                    className="relative group cursor-pointer"
-                    onClick={triggerFileInput}
-                  >
-                    <div className="w-20 h-20 rounded-full bg-gradient-to-r from-red-100 to-blue-100 border-4 border-white shadow-lg overflow-hidden group-hover:shadow-xl transition-all duration-300">
-                      {profilePreview ? (
-                        <img
-                          src={profilePreview}
-                          alt="Profile preview"
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center bg-gradient-to-r from-red-50 to-blue-50">
-                          <FaUser className="text-gray-400 text-2xl" />
+                  <form onSubmit={registerSubmit} className="space-y-6">
+                    <div className="flex justify-center">
+                      <div
+                        className="relative group cursor-pointer"
+                        onClick={triggerFileInput}
+                      >
+                        <div className="w-24 h-24 rounded-full bg-white/20 border-4 border-white/30 shadow-lg overflow-hidden group-hover:shadow-xl transition-all duration-300">
+                          {profilePreview ? (
+                            <img
+                              src={profilePreview}
+                              alt="Profile preview"
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center">
+                              <FaUser className="text-white text-2xl" />
+                            </div>
+                          )}
                         </div>
-                      )}
+                        <div className="absolute inset-0 bg-black/40 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <FaCloudUploadAlt className="text-white text-xl" />
+                        </div>
+                        <input
+                          type="file"
+                          ref={fileInputRef}
+                          onChange={handleImageChange}
+                          accept="image/*"
+                          className="hidden"
+                        />
+                      </div>
                     </div>
-                    <div className="absolute inset-0 bg-black bg-opacity-50 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <FaCloudUploadAlt className="text-white text-lg" />
+
+                    <div className="space-y-4">
+                      <div className="relative">
+                        <input
+                          type="text"
+                          placeholder="Full Name"
+                          required
+                          value={registerName}
+                          onChange={(e) => setRegisterName(e.target.value)}
+                          className="w-full px-4 py-4 bg-white/20 border-2 border-white/30 rounded-xl focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all duration-300 text-white placeholder-white/70 pl-12"
+                        />
+                        <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/70 text-lg">
+                          👤
+                        </span>
+                      </div>
+
+                      <div className="relative">
+                        <input
+                          type="email"
+                          placeholder="Email Address"
+                          required
+                          value={registerEmail}
+                          onChange={(e) => setRegisterEmail(e.target.value)}
+                          className="w-full px-4 py-4 bg-white/20 border-2 border-white/30 rounded-xl focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all duration-300 text-white placeholder-white/70 pl-12"
+                        />
+                        <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/70 text-lg">
+                          ✉️
+                        </span>
+                      </div>
+
+                      <div className="relative">
+                        <input
+                          type={registerPasswordVisible ? "text" : "password"}
+                          placeholder="Password"
+                          required
+                          value={registerPassword}
+                          onChange={(e) => setRegisterPassword(e.target.value)}
+                          className="w-full px-4 py-4 bg-white/20 border-2 border-white/30 rounded-xl focus:outline-none focus:border-white focus:ring-4 focus:ring-white/20 transition-all duration-300 text-white placeholder-white/70 pl-12 pr-12"
+                        />
+                        <span className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white/70 text-lg">
+                          🔒
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setRegisterPasswordVisible(!registerPasswordVisible)
+                          }
+                          className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white/70 hover:text-white transition-colors duration-200"
+                        >
+                          {registerPasswordVisible ? <FaEyeSlash /> : <FaEye />}
+                        </button>
+                      </div>
                     </div>
-                    <input
-                      type="file"
-                      ref={fileInputRef}
-                      onChange={handleImageChange}
-                      accept="image/*"
-                      className="hidden"
-                    />
-                  </div>
-                </div>
 
-                <div className="space-y-4">
-                  <div className="relative">
-                    <input
-                      type="text"
-                      placeholder="Enter your full name"
-                      required
-                      value={registerName}
-                      onChange={(e) => setRegisterName(e.target.value)}
-                      className="w-full px-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 pr-12"
-                    />
-                    <span className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-                      👤
-                    </span>
-                  </div>
-
-                  <div className="relative">
-                    <input
-                      type="email"
-                      placeholder="Enter your email"
-                      required
-                      value={registerEmail}
-                      onChange={(e) => setRegisterEmail(e.target.value)}
-                      className="w-full px-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 pr-12"
-                    />
-                    <span className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400">
-                      ✉
-                    </span>
-                  </div>
-
-                  <div className="relative">
-                    <input
-                      type={registerPasswordVisible ? "text" : "password"}
-                      placeholder="Create a password"
-                      required
-                      value={registerPassword}
-                      onChange={(e) => setRegisterPassword(e.target.value)}
-                      className="w-full px-4 py-4 bg-gray-50 border-2 border-gray-200 rounded-xl focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 pr-12"
-                    />
                     <button
-                      type="button"
-                      onClick={() =>
-                        setRegisterPasswordVisible(!registerPasswordVisible)
-                      }
-                      className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors duration-200"
+                      type="submit"
+                      disabled={loading}
+                      className="w-full bg-white text-blue-600 hover:bg-gray-100 py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
                     >
-                      {registerPasswordVisible ? <FaEyeSlash /> : <FaEye />}
+                      {loading ? (
+                        <div className="flex items-center justify-center space-x-2">
+                          <div className="w-5 h-5 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+                          <span>Creating Account...</span>
+                        </div>
+                      ) : (
+                        "Create Account"
+                      )}
                     </button>
-                  </div>
-                </div>
 
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white py-4 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none my-6"
-                >
-                  {loading ? (
-                    <div className="flex items-center justify-center space-x-2">
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                      <span>Creating Account...</span>
-                    </div>
-                  ) : (
-                    "Create Account"
-                  )}
-                </button>
-
-                <div className="relative mb-6">
-                  <div className="absolute inset-0 flex items-center">
-                    <div className="w-full border-t border-gray-300"></div>
-                  </div>
-                  <div className="relative flex justify-center text-sm">
-                    <span className="px-2 bg-white text-gray-500">
-                      Or sign up with
-                    </span>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-2 gap-3">
-                  <a
-                    href={`${import.meta.env.VITE_API_URL}/api/v1/google`}
-                    className="flex items-center justify-center space-x-2 py-3 border-2 border-gray-200 rounded-xl hover:border-red-500 hover:text-red-600 transition-all duration-300 group"
-                  >
-                    <FaGoogle className="text-gray-500 group-hover:text-red-600 transition-colors duration-200" />
-                    <span className="font-medium">Google</span>
-                  </a>
-                  <a
-                    href={`${import.meta.env.VITE_API_URL}/api/v1/facebook`}
-                    className="flex items-center justify-center space-x-2 py-3 border-2 border-gray-200 rounded-xl hover:border-blue-500 hover:text-blue-600 transition-all duration-300 group"
-                  >
-                    <FaFacebookF className="text-gray-500 group-hover:text-blue-600 transition-colors duration-200" />
-                    <span className="font-medium">Facebook</span>
-                  </a>
-                </div>
-              </form>
-            </div>
-
-            {/* Toggle Panel */}
-            <div className="absolute top-0 left-1/2 w-1/2 h-full overflow-hidden transition-all duration-700 ease-in-out z-10">
-              <div
-                className={`absolute w-[200%] h-full bg-gradient-to-r from-red-600 to-blue-600 transition-all duration-700 ease-in-out ${
-                  isActive ? "left-[-100%]" : "left-0"
-                }`}
-              ></div>
-
-              <div
-                className={`absolute top-0 left-0 w-1/2 h-full flex items-center justify-center p-8 transition-all duration-700 ease-in-out ${
-                  isActive ? "left-0" : "left-[-100%]"
-                }`}
-              >
-                <div className="text-center text-white">
-                  <h1 className="text-3xl font-bold mb-4">New Here?</h1>
-                  <p className="mb-8 opacity-90">
-                    Create an account and discover a world of career
-                    opportunities
-                  </p>
-                  <button
-                    onClick={() => setIsActive(true)}
-                    className="px-8 py-3 border-2 border-white text-white rounded-xl hover:bg-white hover:bg-opacity-10 transition-all duration-300 transform hover:-translate-y-0.5"
-                  >
-                    Sign Up
-                  </button>
-                </div>
-              </div>
-
-              <div
-                className={`absolute top-0 right-0 w-1/2 h-full flex items-center justify-center p-8 transition-all duration-700 ease-in-out ${
-                  isActive ? "right-[-100%]" : "right-0"
-                }`}
-              >
-                <div className="text-center text-white">
-                  <h1 className="text-3xl font-bold mb-4">Welcome Back!</h1>
-                  <p className="mb-8 opacity-90">
-                    Enter your credentials and continue your career journey
-                  </p>
-                  <button
-                    onClick={() => setIsActive(false)}
-                    className="px-8 py-3 border-2 border-white text-white rounded-xl hover:bg-white hover:bg-opacity-10 transition-all duration-300 transform hover:-translate-y-0.5"
-                  >
-                    Sign In
-                  </button>
+                    {/* <div className="text-center">
+                      <p className="text-white/80">
+                        Already have an account?{" "}
+                        <button
+                          type="button"
+                          onClick={() => setIsActive(false)}
+                          className="text-white hover:text-gray-200 font-semibold underline transition-colors duration-200"
+                        >
+                          Sign In
+                        </button>
+                      </p>
+                    </div> */}
+                  </form>
                 </div>
               </div>
             </div>
-          </>
+          </div>
         )}
       </div>
     </div>

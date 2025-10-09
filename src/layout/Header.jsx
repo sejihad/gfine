@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../assets/logo.png";
 
@@ -7,7 +8,7 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
   const location = useLocation();
-
+  const { user, isAuthenticated } = useSelector((state) => state.user);
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
