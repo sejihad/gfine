@@ -134,12 +134,10 @@ const Footer = () => {
                 Developed By
               </span>
               <a
-                href="https://sejihad.vercel.app"
-                target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gradient-to-r from-blue-500 to-red-500 bg-clip-text text-transparent font-bold text-base lg:text-lg hover:scale-105 transition-transform duration-300"
               >
-                SE Jihad
+                GCCB - IT UNIT
               </a>
             </div>
           </div>
