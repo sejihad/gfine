@@ -51,7 +51,7 @@ const Header = () => {
               {/* Logo Text */}
               <div className="flex flex-col leading-tight">
                 {/* Full Version for Desktop */}
-                <span className="hidden lg:block font-semibold text-[17px] text-gray-800 group-hover:text-blue-600 transition-colors duration-300 leading-snug">
+                <span className="hidden lg:block font-semibold text-[17px] text-gray-800  transition-colors duration-300 leading-snug">
                   GfineGrowth Career Community
                 </span>
                 <span
@@ -59,7 +59,7 @@ const Header = () => {
 text-gray-800 lg:block text-[17px] "
                 >
                   Bangladesh ·{" "}
-                  <span className="font-semibold text-blue-600">GCCB</span>
+                  <span className="font-semibold text-gray-800">GCCB</span>
                 </span>
 
                 {/* Mobile Version */}
@@ -94,6 +94,19 @@ text-gray-800 lg:block text-[17px] "
                 }`}
               >
                 About
+                {isActiveLink("/about") && (
+                  <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-blue-600 rounded-full"></span>
+                )}
+              </Link>
+              <Link
+                to="/blogs"
+                className={`relative font-medium transition-all duration-300 px-3 py-2 rounded-lg ${
+                  isActiveLink("/about")
+                    ? "text-blue-600 font-semibold bg-blue-50"
+                    : "text-gray-700 hover:text-blue-600 hover:bg-gray-50"
+                }`}
+              >
+                Blogs
                 {isActiveLink("/about") && (
                   <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-blue-600 rounded-full"></span>
                 )}

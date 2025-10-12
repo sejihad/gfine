@@ -1,5 +1,6 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Home() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
@@ -96,22 +97,31 @@ function Home() {
                 >
                   Our Services
                 </a>
-                <a
-                  href="/about"
+                <Link
+                  to="/contact"
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-blue-600 border-2 border-blue-600 rounded-2xl hover:bg-blue-600 hover:text-white transition-all duration-300 transform hover:scale-105"
                 >
-                  Learn More
-                </a>
+                  Contact Us
+                </Link>
               </div>
             </div>
 
             <div className="relative">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                <img
-                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
-                  alt="Creative team working together"
-                  className="w-full h-[500px] object-cover"
-                />
+              <div className="relative  rounded-3xl overflow-hidden shadow-2xl">
+                {/* Background image (optional) */}
+                {/* <img
+    src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+    alt="Creative team working together"
+    className="w-full h-[500px] object-cover"
+  /> */}
+
+                {/* Text overlay */}
+                <div className="w-full h-[500px] bg-gradient-to-br from-white-600 to-white-600 flex items-center justify-center">
+                  <h1 className="text-yellow-600 ml-10 text-3xl md:text-5xl font-extrabold tracking-wide drop-shadow-lg">
+                    Website Under Construction ⚠
+                  </h1>
+                </div>
+
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
               </div>
 
