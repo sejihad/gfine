@@ -52,7 +52,7 @@ const stats = [
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen mt-5 bg-white">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-blue-50 via-white to-red-50 py-20 lg:py-32">
         <div className="absolute inset-0 bg-white/50"></div>
