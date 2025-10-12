@@ -45,7 +45,7 @@ const Header = () => {
               <img
                 src={logo}
                 alt="Logo"
-                className="h-8 lg:h-12 w-auto transition-transform duration-300 group-hover:scale-105"
+                className="h-10 lg:h-12 w-auto transition-transform duration-300 group-hover:scale-105"
               />
 
               {/* Logo Text */}
