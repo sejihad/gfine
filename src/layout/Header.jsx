@@ -335,6 +335,7 @@ text-gray-800 lg:block text-[17px] "
                 {[
                   { path: "/", label: "Home", icon: "🏠" },
                   { path: "/about", label: "About", icon: "ℹ️" },
+                  { path: "/blogs", label: "Blogs", icon: "📝" },
                   {
                     path: "/career-community",
                     label: "Career Community",
