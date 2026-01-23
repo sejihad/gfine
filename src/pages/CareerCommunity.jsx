@@ -271,7 +271,7 @@ const CareerCommunity = () => {
               }}
               className="border-2 border-white text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300 transform hover:scale-105"
             >
-              Download Calander
+              Download Calendar
             </button>
           </div>
         </div>
