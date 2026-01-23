@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import calendarPdf from "../assets/calander/calander.pdf";
 // Slider images
 const sliderImages = [
   {
@@ -63,13 +63,13 @@ const CareerCommunity = () => {
 
   const nextSlide = () => {
     setCurrentSlide((prev) =>
-      prev === sliderImages.length - 1 ? 0 : prev + 1
+      prev === sliderImages.length - 1 ? 0 : prev + 1,
     );
   };
 
   const prevSlide = () => {
     setCurrentSlide((prev) =>
-      prev === 0 ? sliderImages.length - 1 : prev - 1
+      prev === 0 ? sliderImages.length - 1 : prev - 1,
     );
   };
 
@@ -262,8 +262,16 @@ const CareerCommunity = () => {
             <button className="bg-white text-blue-600 px-8 py-4 rounded-2xl font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105">
               Get Started Today
             </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300 transform hover:scale-105">
-              Schedule a Call
+            <button
+              onClick={() => {
+                const link = document.createElement("a");
+                link.href = calendarPdf;
+                link.download = "calendar.pdf";
+                link.click();
+              }}
+              className="border-2 border-white text-white px-8 py-4 rounded-2xl font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300 transform hover:scale-105"
+            >
+              Download Calander
             </button>
           </div>
         </div>

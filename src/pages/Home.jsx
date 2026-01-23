@@ -65,7 +65,7 @@ function Home() {
 
   const prevTestimonial = () => {
     setCurrentTestimonial(
-      (prev) => (prev - 1 + testimonials.length) % testimonials.length
+      (prev) => (prev - 1 + testimonials.length) % testimonials.length,
     );
   };
 
@@ -79,9 +79,9 @@ function Home() {
             <div className="space-y-8">
               <div className="space-y-6">
                 <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                  We Create Amazing{" "}
+                  Welcome to{" "}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-red-600">
-                    Digital Experiences
+                    GCCB
                   </span>
                 </h1>
                 <p className="text-xl text-gray-600 leading-relaxed">
