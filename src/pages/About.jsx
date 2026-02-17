@@ -336,8 +336,8 @@ const About = () => {
 
           <p className="mt-8 text-center text-lg lg:text-xl text-gray-800 font-semibold">
             Our mission is to solve career problems by providing precise
-            guideline, instruction and proper support to develop youth and make
-            professionals successful in their career.
+            guidelines, instructions and proper support to develop youth and
+            make professionals more successful in their career.
           </p>
 
           <div className="mt-10 flex justify-center">
