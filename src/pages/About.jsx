@@ -274,7 +274,7 @@ const About = () => {
     },
     {
       icon: <FiHeart className="text-2xl text-blue-600" />,
-      title: "Social Welfare Activity",
+      title: "Social Welfare Activities",
       text: "Support social initiatives that uplift communities and create inclusion.",
     },
   ];
@@ -318,7 +318,7 @@ const About = () => {
           </h2>
 
           <p className="mt-8 text-center text-lg lg:text-xl text-gray-700 font-medium">
-            Building up a Skillful and Employable Bangladesh.
+            Building a highly skilled and employable Bangladesh.
           </p>
 
           <div className="mt-10 flex justify-center">
@@ -336,8 +336,9 @@ const About = () => {
 
           <p className="mt-8 text-center text-lg lg:text-xl text-gray-800 font-semibold">
             Our mission is to solve career problems by providing precise
-            guidelines, instructions and proper support to develop youth and
-            make professionals more successful in their career.
+            guidelines, structured instructions, and comprehensive support to
+            empower youth and enable professionals to achieve more career
+            success.
           </p>
 
           <div className="mt-10 flex justify-center">
