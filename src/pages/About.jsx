@@ -229,7 +229,7 @@
 
 // export default About;
 
-import { FiBookOpen, FiCpu, FiHeart, FiTrendingUp } from "react-icons/fi";
+import { FiBookOpen, FiHeart, FiSearch, FiTrendingUp } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 const About = () => {
@@ -268,7 +268,7 @@ const About = () => {
       text: "Provide clear roadmaps, mentoring, and job-ready skill development.",
     },
     {
-      icon: <FiCpu className="text-2xl text-blue-600" />,
+      icon: <FiSearch className="text-2xl text-blue-600" />,
       title: "Research & Invention",
       text: "Encourage innovation, experimentation, and problem-solving culture.",
     },
