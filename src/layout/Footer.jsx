@@ -14,19 +14,19 @@ const Footer = () => {
       icon: <FaFacebookF />,
       bg: "bg-blue-600",
       hover: "hover:bg-blue-700",
-      href: "https://facebook.com",
+      href: "https://www.facebook.com/gccbofficial",
     },
     {
       icon: <FaYoutube />,
       bg: "bg-red-600",
       hover: "hover:bg-red-700",
-      href: "https://youtube.com",
+      href: "https://www.youtube.com/@GCCBOfficial",
     },
     {
       icon: <FaInstagram />,
       bg: "bg-gradient-to-r from-purple-600 to-pink-600",
       hover: "hover:from-purple-700 hover:to-pink-700",
-      href: "https://instagram.com",
+      href: "https://www.instagram.com/gccbofficial",
     },
     {
       icon: <FaLinkedinIn />,
@@ -88,9 +88,8 @@ const Footer = () => {
                 </div>
                 <div>
                   <p className="text-gray-300 text-base lg:text-lg leading-relaxed group-hover:text-white transition-colors duration-300">
-                    123 Business Ave, Suite 456
-                    <br />
-                    New York, NY 10001
+                    {/* <br /> */}
+                    Dhaka, Bangladesh.
                   </p>
                 </div>
               </div>
@@ -102,7 +101,7 @@ const Footer = () => {
                 </div>
                 <div>
                   <p className="text-gray-300 text-base lg:text-lg group-hover:text-white transition-colors duration-300">
-                    +1 (555) 123-4567
+                    +880 1328497303
                   </p>
                 </div>
               </div>
@@ -114,7 +113,7 @@ const Footer = () => {
                 </div>
                 <div>
                   <p className="text-gray-300 text-base lg:text-lg group-hover:text-white transition-colors duration-300">
-                    info@creativeagency.com
+                    gccbofficial.org@gmail.com
                   </p>
                 </div>
               </div>
