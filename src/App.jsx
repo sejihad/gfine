@@ -6,6 +6,7 @@ import Header from "./layout/Header.jsx";
 import About from "./pages/About.jsx";
 import Login from "./pages/Auth/Login.jsx";
 import CareerCommunity from "./pages/CareerCommunity.jsx";
+import Courses from "./pages/Courses.jsx";
 import Home from "./pages/Home.jsx";
 import NotFound from "./pages/NotFound.jsx";
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/courses" element={<Courses />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
           <Route path="/career-community" element={<CareerCommunity />} />

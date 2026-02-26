@@ -45,12 +45,12 @@ const Header = () => {
               <img
                 src={logo}
                 alt="Logo"
-                className="h-10 lg:h-12 w-auto transition-transform duration-300 group-hover:scale-105"
+                className="h-14 lg:h-18 w-auto transition-transform duration-300 group-hover:scale-105"
               />
 
               {/* Logo Text */}
-              <div className="flex flex-col leading-tight">
-                {/* Full Version for Desktop */}
+              {/* <div className="flex flex-col leading-tight">
+               
                 <span className="hidden lg:block font-semibold text-[17px] text-gray-800  transition-colors duration-300 leading-snug">
                   GfineGrowth Career Community
                 </span>
@@ -62,11 +62,11 @@ text-gray-800 lg:block text-[17px] "
                   <span className="font-semibold text-gray-800">GCCB</span>
                 </span>
 
-                {/* Mobile Version */}
+           
                 <span className="block lg:hidden text-[14px] font-medium text-gray-800 group-hover:text-blue-600 transition-colors duration-300 leading-tight">
                   GfineGrowth Career Community Bangladesh (GCCB)
                 </span>
-              </div>
+              </div> */}
             </Link>
 
             {/* Desktop Navigation */}
@@ -81,6 +81,19 @@ text-gray-800 lg:block text-[17px] "
               >
                 Home
                 {isActiveLink("/") && (
+                  <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-blue-600 rounded-full"></span>
+                )}
+              </Link>
+              <Link
+                to="/courses"
+                className={`relative font-medium transition-all duration-300 px-3 py-2 rounded-lg ${
+                  isActiveLink("/courses")
+                    ? "text-blue-600 font-semibold bg-blue-50"
+                    : "text-gray-700 hover:text-blue-600 hover:bg-gray-50"
+                }`}
+              >
+                Courses
+                {isActiveLink("/courses") && (
                   <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-blue-600 rounded-full"></span>
                 )}
               </Link>
