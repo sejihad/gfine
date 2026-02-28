@@ -216,7 +216,7 @@ const CareerCommunity = () => {
                   <p className="text-gray-600 mb-4 line-clamp-3">{post.desc}</p>
 
                   <Link
-                    to={`/career-community/${post.id}`}
+                    to={`/community/${post.id}`}
                     className="inline-flex items-center text-blue-600 font-semibold group-hover:text-red-600 transition-colors duration-300"
                   >
                     Read More

@@ -95,7 +95,7 @@ function Home() {
                   href="#"
                   className="inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-lg"
                 >
-                  Our Services
+                  Join Community
                 </a>
                 <Link
                   to="/contact"

@@ -126,15 +126,15 @@ text-gray-800 lg:block text-[17px] "
               </Link>
 
               <Link
-                to="/career-community"
+                to="/community"
                 className={`relative font-medium transition-all duration-300 px-3 py-2 rounded-lg ${
-                  isActiveLink("/career-community")
+                  isActiveLink("/community")
                     ? "text-blue-600 font-semibold bg-blue-50"
                     : "text-gray-700 hover:text-blue-600 hover:bg-gray-50"
                 }`}
               >
-                Career Community
-                {isActiveLink("/career-community") && (
+                Community
+                {isActiveLink("/community") && (
                   <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-blue-600 rounded-full"></span>
                 )}
               </Link>
@@ -349,9 +349,11 @@ text-gray-800 lg:block text-[17px] "
                   { path: "/", label: "Home", icon: "🏠" },
                   { path: "/about", label: "About", icon: "ℹ️" },
                   { path: "/blogs", label: "Blogs", icon: "📝" },
+
+                  { path: "/courses", label: "Courses", icon: "🎓" },
                   {
-                    path: "/career-community",
-                    label: "Career Community",
+                    path: "/community",
+                    label: "Community",
                     icon: "👥",
                   },
                 ].map((item) => (
